@@ -222,13 +222,19 @@ with mid_col:
     if one_clicked:
         if st.session_state.remaining_players:
 
-            # PICK PLAYER + OUTCOME
-            player = random.choice(st.session_state.remaining_players)
-            outcome = random.choices(
-                outcomes,
-                weights=[st.session_state.current_weights[o] for o in outcomes],
-                k=1
-            )[0]
+           # PICK PLAYER + OUTCOME
+player = random.choice(st.session_state.remaining_players)
+outcome = random.choices(
+    outcomes,
+    weights=[st.session_state.current_weights[o] for o in outcomes],
+    k=1
+)[0]
+
+# Prevent Dom Pemberry and Briddy Birgaminin from leaving the club
+if player in ["Dom Pemberry", "Briddy Birgaminin"] and outcome == "Leaves the club":
+    outcome = "Stay"
+
+
 
             # UPDATE WEIGHTS
             if outcome != "Stay":
