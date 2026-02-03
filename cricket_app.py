@@ -84,7 +84,7 @@ players = [
 outcomes = [
     "Stay",
     "Broke finger at work (Lose 10 fielding points)",
-    "Broken Leg: Out for the season",
+    "Broken Leg - Out for the season",
     "Confidence Crisis (Lose 5 Skill Points and gets new hairstyle)",
     "Getting Married (Miss first 4 games)",
     "Going through bad breakup (Lose 10 Skill Points)",
@@ -103,7 +103,7 @@ if "current_weights" not in st.session_state:
         "Stay": 70,
         "Dead": 1,
         "Broke finger at work (Lose 10 fielding points)": 5,
-        "Broken Leg: Out for the season": 5,
+        "Broken Leg - Out for the season": 5,
         "Confidence Crisis (Lose 5 Skill Points and gets new hairstyle)": 5,
         "Getting Married (Miss first 4 games)": 5,
         "Going through bad breakup (Lose 10 Skill Points)": 5,
@@ -182,7 +182,7 @@ with right_col:
     st.markdown("<p class='outcome-name outcome-Stay'>Stay</p>", unsafe_allow_html=True)
 
     st.markdown("<p class='outcome-name' style='background-color:#ffd9cc;'>Broke finger at work (Lose 10 fielding points)</p>", unsafe_allow_html=True)
-    st.markdown("<p class='outcome-name outcome-Out'>Broken Leg: Out for the season</p>", unsafe_allow_html=True)
+    st.markdown("<p class='outcome-name outcome-Out'>Broken Leg - Out for the season</p>", unsafe_allow_html=True)
     st.markdown("<p class='outcome-name' style='background-color:#e6ccff;'>Confidence Crisis (Lose 5 Skill Points and gets new hairstyle)</p>", unsafe_allow_html=True)
     st.markdown("<p class='outcome-name outcome-Married'>Getting Married (Miss first 4 games)</p>", unsafe_allow_html=True)
     st.markdown("<p class='outcome-name outcome-Skill'>Going through bad breakup (Lose 10 Skill Points)</p>", unsafe_allow_html=True)
@@ -256,7 +256,7 @@ with mid_col:
             "Stay": 70,
             "Dead": 1,
             "Broke finger at work (Lose 10 fielding points)": 5,
-            "Broken Leg: Out for the season": 5,
+            "Broken Leg - Out for the season": 5,
             "Confidence Crisis (Lose 5 Skill Points and gets new hairstyle)": 5,
             "Getting Married (Miss first 4 games)": 5,
             "Going through bad breakup (Lose 10 Skill Points)": 5,
@@ -274,7 +274,7 @@ with mid_col:
     def colour_outcomes(val):
         colours = {
             "Stay": "background-color: #c8f7c5; color: black;",
-            "Broken Leg: Out for the season": "background-color: #f7d4c5; color: black;",
+            "Broken Leg - Out for the season": "background-color: #f7d4c5; color: black;",
             "Leaves the club": "background-color: #fce5cd; color: black;",
             "Dead": "background-color: #ffb3b3; color: black;",
             "Works occasional weekends, misses 1 game in 4": "background-color: #fff2cc; color: black;",
