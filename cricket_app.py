@@ -218,41 +218,40 @@ with mid_col:
         reset_clicked = st.button("Reset All Players", use_container_width=True)
     st.markdown("</div>", unsafe_allow_html=True)
 
-    # ---------- GENERATE ONE PLAYER ----------
-    if one_clicked:
-        if st.session_state.remaining_players:
+   # ---------- GENERATE ONE PLAYER ----------
+if one_clicked:
+    if st.session_state.remaining_players:
 
-           # PICK PLAYER + OUTCOME
-player = random.choice(st.session_state.remaining_players)
-outcome = random.choices(
-    outcomes,
-    weights=[st.session_state.current_weights[o] for o in outcomes],
-    k=1
-)[0]
+        # PICK PLAYER + OUTCOME
+        player = random.choice(st.session_state.remaining_players)
+        outcome = random.choices(
+            outcomes,
+            weights=[st.session_state.current_weights[o] for o in outcomes],
+            k=1
+        )[0]
 
-# Prevent Dom Pemberry and Briddy Birgaminin from leaving the club
-if player in ["Dom Pemberry", "Briddy Birgaminin"] and outcome == "Leaves the club":
-    outcome = "Stay"
+        # Prevent Dom Pemberry and Briddy Birgaminin from leaving the club
+        if player in ["Dom Pemberry", "Briddy Birgaminin"] and outcome == "Leaves the club":
+            outcome = "Stay"
 
+        # UPDATE WEIGHTS
+        if outcome != "Stay":
+            st.session_state.current_weights[outcome] = max(
+                1, st.session_state.current_weights[outcome] - 1
+            )
 
+        # STORE RESULT
+        result_entry = {"Player": player, "Outcome": outcome}
+        st.session_state.single_results.append(result_entry)
+        st.session_state.remaining_players.remove(player)
 
-            # UPDATE WEIGHTS
-            if outcome != "Stay":
-                st.session_state.current_weights[outcome] = max(
-                    1, st.session_state.current_weights[outcome] - 1
-                )
+        # OPEN MODAL
+        st.session_state.modal_result = result_entry
+        st.session_state.show_modal = True
 
-            # STORE RESULT
-            result_entry = {"Player": player, "Outcome": outcome}
-            st.session_state.single_results.append(result_entry)
-            st.session_state.remaining_players.remove(player)
+    else:
+        st.warning("All players have already been assigned!")
 
-            # OPEN MODAL
-            st.session_state.modal_result = result_entry
-            st.session_state.show_modal = True
-
-        else:
-            st.warning("All players have already been assigned!")
 
     # ---------- RESET ----------
     if reset_clicked:
